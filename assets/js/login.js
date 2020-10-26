@@ -1,6 +1,8 @@
 $(function () {
-  $('#loginHref').on('click', function () {
+  $('.regiHref').on('click', function () {
     $('.registerBox').show().prev().hide();
-    console.log('sad');
+  });
+  $('.loginHref').on('click', function () {
+    $('.loginBox').show().next().hide();
   });
 });
