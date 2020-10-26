@@ -40,10 +40,10 @@ $(function () {
     e.preventDefault();
     $.ajax({
       type: 'post',
-      url: 'http://ajax.frontend.itheima.net/api/reguser',
+      url: '/api/reguser',
       data: $(this).serialize(),
       success: function (msg) {
-        layer.msg(msg.message);
+        // layer.msg(msg.message);
         $('.registerBox').hide().prev().show();
       },
     });
@@ -53,10 +53,10 @@ $(function () {
     e.preventDefault();
     $.ajax({
       type: 'post',
-      url: 'http://ajax.frontend.itheima.net/api/login',
+      url: '/api/login',
       data: $(this).serialize(),
       success: function (msg) {
-        layer.msg(msg.message);
+        // layer.msg(msg.message);
         if (msg.status == 0) {
           location.href = './index.html';
         }
