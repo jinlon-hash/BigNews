@@ -58,6 +58,7 @@ $(function () {
       success: function (msg) {
         layer.msg(msg.message);
         if (msg.status == 0) {
+          console.log(msg);
           location.href = './index.html';
         }
       },
