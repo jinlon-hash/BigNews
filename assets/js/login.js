@@ -43,7 +43,7 @@ $(function () {
       url: 'http://ajax.frontend.itheima.net/api/reguser',
       data: $(this).serialize(),
       success: function (msg) {
-        console.log(msg);
+        layer.msg(msg.message);
         $('.registerBox').hide().prev().show();
       },
     });
@@ -56,6 +56,7 @@ $(function () {
       url: 'http://ajax.frontend.itheima.net/api/login',
       data: $(this).serialize(),
       success: function (msg) {
+        layer.msg(msg.message);
         if (msg.status == 0) {
           location.href = './index.html';
         }
