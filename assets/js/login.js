@@ -24,14 +24,42 @@ $(function () {
       // item是当前的确认密码框元素
       // value是当前确认密码框中输入的值
       // 2.1 获取密码框中的输入内容
-      var passVal = $('.register .myForm input[name=password]').val();
+      var passVal = $('.registerBox .myForm input[name=password]').val();
       // 2.2 判断两次输入的密码是否相同
       if (passVal !== value) {
         // 2.3 清空密码框并添加提示
-        $('.register .myForm .pass,.register .myForm .repass').val('');
+        $('.registerBox .myForm .pass,.registerBox .myForm .repass').val('');
         return '两次密码不一致,请重新输入';
       }
     },
     pass: [/^[\d]{6,12}$/, '密码必须6到12位数字，且不能出现空格'],
+  });
+
+  //注册
+  $('.myForm').on('submit', function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'post',
+      url: 'http://ajax.frontend.itheima.net/api/reguser',
+      data: $(this).serialize(),
+      success: function (msg) {
+        console.log(msg);
+        $('.registerBox').hide().prev().show();
+      },
+    });
+  });
+  // 登陆
+  $('.myForm').on('submit', function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'post',
+      url: 'http://ajax.frontend.itheima.net/api/login',
+      data: $(this).serialize(),
+      success: function (msg) {
+        if (msg.status == 0) {
+          location.href = './index.html';
+        }
+      },
+    });
   });
 });
