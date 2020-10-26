@@ -43,7 +43,7 @@ $(function () {
       url: '/api/reguser',
       data: $(this).serialize(),
       success: function (msg) {
-        // layer.msg(msg.message);
+        layer.msg(msg.message);
         $('.registerBox').hide().prev().show();
       },
     });
@@ -56,7 +56,7 @@ $(function () {
       url: '/api/login',
       data: $(this).serialize(),
       success: function (msg) {
-        // layer.msg(msg.message);
+        layer.msg(msg.message);
         if (msg.status == 0) {
           location.href = './index.html';
         }
