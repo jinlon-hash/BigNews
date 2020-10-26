@@ -9,77 +9,111 @@
   </head>
   <body>
     <div class="logo"><img src="../assets/images/logo.png" alt="" /></div>
+    <!-- 登陆的盒子开始 -->
     <div class="loginBox">
       <p><img src="../assets/images/login_title.png" alt="" /></p>
-      <div class="layui-form-item">
-        <input
-          type="text"
-          name="title"
-          required
-          lay-verify="required"
-          placeholder="请输入用户名"
-          autocomplete="off"
-          class="layui-input"
-        />
-      </div>
-      <div class="layui-form-item">
-        <input
-          type="password"
-          name="password"
-          required
-          lay-verify="required"
-          placeholder="请输入密码"
-          autocomplete="off"
-          class="layui-input"
-        />
-      </div>
-      <button type="button" class="layui-btn layui-btn-fluid">登陆</button>
-      <a href="javascript:;" class="regiHref">去注册</a>
-    </div>
-    <div class="registerBox">
-      <p><img src="../assets/images/login_title.png" alt="" /></p>
+      <form action="" class="layui-form myForm">
       <div class="layui-form-item">
         <i
-          class="layui-icon layui-icon-face-smile"
-          style="font-size: 30px; color: #1e9fff"
+          class="layui-icon layui-icon-username"
+          style="font-size: 15px; color: #000"
         ></i>
         <input
           type="text"
           name="title"
           required
-          lay-verify="required"
+          lay-verify="required|username"
           placeholder="请输入用户名"
           autocomplete="off"
           class="layui-input"
         />
       </div>
       <div class="layui-form-item">
+        <i
+          class="layui-icon layui-icon-password"
+          style="font-size: 15px; color: #000"
+        ></i>
         <input
           type="password"
           name="password"
           required
-          lay-verify="required"
+          lay-verify="required | pass"
+          placeholder="请输入密码"
+          autocomplete="off"
+          class="layui-input"
+        />
+      </div>
+      <button
+        class="layui-btn layui-btn-normal layui-btn-fluid"
+        lay-submit
+        lay-filter="formDemo"
+      >
+        登陆
+      </button>
+      <a href="javascript:;" class="regiHref">去注册</a>
+    </div>
+  </form>
+  <!-- 注册的盒子 -->
+    <div class="registerBox">
+      <p><img src="../assets/images/login_title.png" alt="" /></p>
+      <form action="" class="layui-form myForm" >
+      <div class="layui-form-item">
+        <i
+          class="layui-icon layui-icon-username"
+          style="font-size: 15px; color: #000"
+        ></i>
+        <input
+          type="text"
+          name="username"
+          required
+          lay-verify="required | username"
+          placeholder="请输入用户名"
+          autocomplete="off"
+          class="layui-input"
+        />
+      </div>
+      <div class="layui-form-item">
+        <i
+          class="layui-icon layui-icon-password"
+          style="font-size: 15px; color: #000"
+        ></i>
+        <input
+          type="password"
+          name="password"
+          required
+          lay-verify="required|pass"
           placeholder="请输入密码"
           autocomplete="off"
           class="layui-input"
         />
       </div>
       <div class="layui-form-item">
+        <i
+          class="layui-icon layui-icon-password"
+          style="font-size: 15px; color: #000"
+        ></i>
         <input
           type="password"
           name="repass"
           required
-          lay-verify="required"
+          lay-verify="required | repass"
           placeholder="再次确认密码"
           autocomplete="off"
           class="layui-input"
         />
       </div>
-      <button type="button" class="layui-btn layui-btn-fluid">注册</button>
+      <button
+        class="layui-btn layui-btn-normal layui-btn-fluid"
+        lay-submit
+        lay-filter="formDemo"
+      >
+        注册
+      </button>
       <a href="javascript:;" class="loginHref">去登陆</a>
+    </form>
     </div>
     <script src="../assets/lib/jquery.js"></script>
-    <script src="./assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/layui/layui.all.js"></script>
     <script src="../assets/js/login.js"></script>
   </body>
 </html>

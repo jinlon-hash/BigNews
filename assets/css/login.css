@@ -34,14 +34,30 @@ body {
   justify-content: center;
   align-items: center;
 }
+.loginBox .layui-form-item,
+.registerBox .layui-form-item {
+  margin-bottom: 0px;
+}
+.loginBox .layui-form-item .layui-icon,
+.registerBox .layui-form-item .layui-icon {
+  font-size: 15px;
+  position: relative;
+  top: 28px;
+  left: 8px;
+}
+.loginBox .layui-form-item input,
+.registerBox .layui-form-item input {
+  text-indent: 1.5em;
+}
 .loginBox button,
 .registerBox button {
-  margin-bottom: 10px;
+  margin: 10px 0;
+  background-color: #1e9fff;
 }
 .loginBox a,
 .registerBox a {
   float: right;
 }
-.registerBox {
+.loginBox {
   display: none;
 }
