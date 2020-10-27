@@ -2,10 +2,6 @@ $(function () {
   $.ajax({
     type: 'GET',
     url: '/my/userinfo',
-    headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTg3NTIsInVzZXJuYW1lIjoiMTY2MTY2IiwicGFzc3dvcmQiOiIiLCJuaWNrbmFtZSI6IiIsImVtYWlsIjoiIiwidXNlcl9waWMiOiIiLCJpYXQiOjE2MDM3NjI5NTksImV4cCI6MTYwMzc5ODk1OX0.Sf2L9n5IjNDeSpYxCXWVX5WOHRyON0ZY83e0m-kI0w8',
-    },
     success: function (res) {
       console.log(res);
       if (res.status == 0) {
