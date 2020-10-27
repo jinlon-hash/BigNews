@@ -10,7 +10,7 @@ $(function () {
       console.log(res);
       if (res.status == 0) {
         // 替换成真正的欢迎语
-        $('.userInfo .welcome').html(`欢迎&nbsp;&nbsp;${res.data.username}`); // 是要显示头像图片还是显示字母头像要进行判断
+        $('.userInfo .welcome').html(`欢迎&nbsp;&nbsp;${res.data.username}`); // 是要显示头像图片还是显示字母头像要进行判断
 
         if (res.data.user_pic) {
           // 让头像img显示出来
@@ -22,11 +22,11 @@ $(function () {
           $('.userInfo .text-avatar,.layui-header .text-avatar').hide();
         } else {
           // 第一次登陆成功的时候 user_pic是一个null 'aaf'
-          $('.userInfo .text-avatar').text(
+          $('.userInfo .text-avatar').text(
             res.data.username.slice(0, 1).toUpperCase()
           ); // 顶部右侧字母头像如下显示
 
-          $('.layui-header .text-avatar').text(
+          $('.layui-nav .text-avatar').text(
             res.data.username.slice(0, 1).toUpperCase()
           );
         }

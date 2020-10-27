@@ -11,3 +11,8 @@
 span.welcome {
   color: #fff;
 }
+.userInfo {
+  height: 60px;
+  line-height: 60px;
+  padding-left: 25px;
+}
