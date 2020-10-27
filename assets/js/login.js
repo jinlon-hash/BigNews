@@ -55,10 +55,10 @@ $(function () {
       type: 'post',
       url: '/api/login',
       data: $(this).serialize(),
-      success: function (msg) {
-        layer.msg(msg.message);
-        if (msg.status == 0) {
-          console.log(msg);
+      success: function (res) {
+        layer.msg(res.message);
+        if (res.status == 0) {
+          console.log(res);
           window.localStorage.setItem('token', res.token);
           location.href = './index.html';
         }
