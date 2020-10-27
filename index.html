@@ -7,15 +7,15 @@
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
     <title>大事件</title>
-    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css" />
-    <link rel="stylesheet" href="../assets/fonts/iconfont.css" />
-    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="./assets/fonts/iconfont.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
   </head>
   <body class="layui-layout-body">
     <div class="layui-layout layui-layout-admin">
       <div class="layui-header">
         <div class="layui-logo">
-          <img src="../assets/images/logo.png" alt="" />
+          <img src="./assets/images/logo.png" alt="" />
         </div>
         <ul class="layui-nav layui-layout-right">
           <li class="layui-nav-item">
@@ -24,9 +24,21 @@
               个人中心
             </a>
             <dl class="layui-nav-child">
-              <dd><a href="">基本资料</a></dd>
-              <dd><a href="">更换头像</a></dd>
-              <dd><a href="">重置密码</a></dd>
+              <dd>
+                <a href="./user/user_info.html" target="main_iframe"
+                  >基本资料</a
+                >
+              </dd>
+              <dd>
+                <a href="./user/user_avatar.html" target="main_iframe"
+                  >更换头像</a
+                >
+              </dd>
+              <dd>
+                <a href="./user/user_password.html" target="main_iframe"
+                  >重置密码</a
+                >
+              </dd>
             </dl>
           </li>
           <li class="layui-nav-item logout">
@@ -51,9 +63,13 @@
             </a>
           </div>
           <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-          <ul class="layui-nav fenzhi    layui-nav-tree" lay-filter="test" lay-shrink="all">
+          <ul
+            class="layui-nav fenzhi layui-nav-tree"
+            lay-filter="test"
+            lay-shrink="all"
+          >
             <li class="layui-nav-item layui-this">
-              <a href="">
+              <a href="./index.html">
                 <span
                   class="iconfont icon-home"
                   style="margin-right: 10px"
@@ -67,7 +83,7 @@
               >
               <dl class="layui-nav-child">
                 <dd>
-                  <a href="javascript:;"
+                  <a href="./article/article_categroy.html" target="main_iframe"
                     ><i
                       class="layui-icon layui-icon-app"
                       style="font-size: 16px; color: #ccc; margin-right: 6px"
@@ -76,7 +92,7 @@
                   >
                 </dd>
                 <dd>
-                  <a href="javascript:;"
+                  <a href="./article/article_list.html" target="main_iframe"
                     ><i
                       class="layui-icon layui-icon-app"
                       style="font-size: 16px; color: #ccc; margin-right: 6px"
@@ -85,7 +101,7 @@
                   >
                 </dd>
                 <dd>
-                  <a href="javascript:;"
+                  <a href="./article/article_release.html" target="main_iframe"
                     ><i
                       class="layui-icon layui-icon-app"
                       style="font-size: 16px; color: #ccc; margin-right: 6px"
@@ -101,7 +117,7 @@
               >
               <dl class="layui-nav-child">
                 <dd>
-                  <a href="javascript:;"
+                  <a href="./user/user_info.html" target="main_iframe"
                     ><i
                       class="layui-icon layui-icon-app"
                       style="font-size: 16px; color: #ccc; margin-right: 6px"
@@ -110,7 +126,7 @@
                   >
                 </dd>
                 <dd>
-                  <a href="javascript:;"
+                  <a href="./user/user_avatar.html" target="main_iframe"
                     ><i
                       class="layui-icon layui-icon-app"
                       style="font-size: 16px; color: #ccc; margin-right: 6px"
@@ -119,7 +135,7 @@
                   >
                 </dd>
                 <dd>
-                  <a href="javascript:;"
+                  <a href="./user/user_password.html" target="main_iframe"
                     ><i
                       class="layui-icon layui-icon-app"
                       style="font-size: 16px; color: #ccc; margin-right: 6px"
@@ -133,9 +149,16 @@
         </div>
       </div>
 
-      <div class="layui-body">
+      <div class="layui-body" style="overflow: hidden;">
         <!-- 内容主体区域 -->
-       <iframe src="./indexPages.html" frameborder="0" width="100%" height="100%"></iframe>
+        <iframe
+          src="./home/indexPages.html"
+          frameborder="0"
+          width="100%"
+          height="100%"
+          
+          name="main_iframe"
+        ></iframe>
       </div>
 
       <div class="layui-footer">
@@ -143,10 +166,10 @@
         © jinlong.com - 大事件
       </div>
     </div>
-    
-    <script src="../assets/lib/jquery.js"></script>
-    <script src="../assets/js/comment.js"></script>
-    <script src="../assets/js/index.js"></script>
-    <script src="../assets/lib/layui/layui.all.js"></script>
+
+    <script src="./assets/lib/jquery.js"></script>
+    <script src="./assets/js/comment.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/lib/layui/layui.all.js"></script>
   </body>
 </html>
