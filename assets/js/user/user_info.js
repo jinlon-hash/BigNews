@@ -39,13 +39,15 @@ $(function () {
   //第三步：表单的submit事件，收集更改信息，然后完成数据交互进行修改
   $('.myForm').on('submit', function (e) {
     e.preventDefault();
-    console.log('sadf');
-    $({
+    $.ajax({
       type: 'post',
       url: '/my/userinfo',
-      data: layui.form.val('myForm'),
+      //表单序列化，会将form标签内的所有带有name属性的值一并获取并拼接成查询字符串格式
+      data: $(this).serialize(),
       success: function (info) {
-        console.log(info);
+        if (info.status == 0) {
+          layer.msg(info.message);
+        }
       },
     });
   });

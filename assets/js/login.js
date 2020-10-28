@@ -57,8 +57,8 @@ $(function () {
       url: '/api/login',
       data: $(this).serialize(),
       success: function (res) {
+        layer.msg(res.message);
         if (res.status == 0) {
-          layer.msg(res.message);
           console.log(res);
           window.localStorage.setItem('token', res.token);
           location.href = './index.html';
