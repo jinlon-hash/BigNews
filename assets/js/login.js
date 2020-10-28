@@ -24,11 +24,11 @@ $(function () {
       // item是当前的确认密码框元素
       // value是当前确认密码框中输入的值
       // 2.1 获取密码框中的输入内容
-      var passVal = $('.registerBox .myForm input[name=password]').val();
+      var passVal = $('.registerBox .myForm2 input[name=password]').val();
       // 2.2 判断两次输入的密码是否相同
       if (passVal !== value) {
         // 2.3 清空密码框并添加提示
-        $('.registerBox .myForm .pass,.registerBox .myForm .repass').val('');
+        $('.registerBox .myForm2 .pass,.registerBox .myForm2 .repass').val('');
         return '两次密码不一致,请重新输入';
       }
     },
@@ -36,7 +36,7 @@ $(function () {
   });
 
   //注册
-  $('.myForm').on('submit', function (e) {
+  $('.myForm2').on('submit', function (e) {
     e.preventDefault();
     $.ajax({
       type: 'post',
@@ -45,6 +45,7 @@ $(function () {
       success: function (msg) {
         layer.msg(msg.message);
         $('.registerBox').hide().prev().show();
+        console.log('注册成功');
       },
     });
   });
@@ -56,8 +57,8 @@ $(function () {
       url: '/api/login',
       data: $(this).serialize(),
       success: function (res) {
-        layer.msg(res.message);
         if (res.status == 0) {
+          layer.msg(res.message);
           console.log(res);
           window.localStorage.setItem('token', res.token);
           location.href = './index.html';

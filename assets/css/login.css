@@ -58,6 +58,6 @@ body {
 .registerBox a {
   float: right;
 }
-.loginBox {
+.registerBox {
   display: none;
 }
