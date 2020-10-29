@@ -5,7 +5,7 @@ $(function () {
       type: 'get',
       url: '/my/userinfo',
       success: function (res) {
-        // console.log('success中的输出', res);
+        console.log('success中的输出', res);
         if (res.status == 0) {
           // 1.2 将昵称或用户名与头像渲染到对应位置
           // 左侧欢迎语
