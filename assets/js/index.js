@@ -1,34 +1,45 @@
 $(function () {
-  $.ajax({
-    type: 'GET',
-    url: '/my/userinfo',
-    success: function (res) {
-      console.log(res);
-      if (res.status == 0) {
-        // 替换成真正的欢迎语
-        $('.userInfo .welcome').html(`欢迎&nbsp;&nbsp;${res.data.username}`); // 是要显示头像图片还是显示字母头像要进行判断
-
-        if (res.data.user_pic) {
-          // 让头像img显示出来
-          $('.userInfo .layui-nav-img').show().attr('src', res.data.user_pic); // 顶部的图像也要显示出来
-          $('.layui-header .layui-nav-img')
-            .show()
-            .attr('src', res.data.user_pic); // 让字母头像隐藏起来
-
-          $('.userInfo .text-avatar,.layui-header .text-avatar').hide();
-        } else {
-          // 第一次登陆成功的时候 user_pic是一个null 'aaf'
-          $('.userInfo .text-avatar').text(
-            res.data.username.slice(0, 1).toUpperCase()
-          ); // 顶部右侧字母头像如下显示
-
-          $('.layui-nav .text-avatar').text(
-            res.data.username.slice(0, 1).toUpperCase()
+  getUserInfo();
+  function getUserInfo() {
+    $.ajax({
+      type: 'get',
+      url: '/my/userinfo',
+      success: function (res) {
+        // console.log('success中的输出', res);
+        if (res.status == 0) {
+          // 1.2 将昵称或用户名与头像渲染到对应位置
+          // 左侧欢迎语
+          $('.userInfo .welcome').html(
+            `欢迎&nbsp;&nbsp;${
+              res.data.nickname ? res.data.nickname : res.data.username
+            }`
           );
+          // 左侧欢迎语的头像位置
+          if (!res.data.user_pic) {
+            // 没有头像
+            if (!res.data.nickname) {
+              $('.userInfo .text-avatar,.layui-header .text-avatar').text(
+                res.data.username.slice(0, 1).toUpperCase()
+              );
+            } else {
+              $('.userInfo .text-avatar,.layui-header .text-avatar').text(
+                res.data.nickname.slice(0, 1).toUpperCase()
+              );
+            }
+          } else {
+            // 显示对应的头像
+            $('.userInfo .text-avatar,.layui-header .text-avatar')
+              .hide()
+              .next()
+              .show()
+              .attr('src', res.data.user_pic);
+          }
         }
-      }
-    },
-  });
+      },
+    });
+  }
+
+  window.getUserInfo = getUserInfo;
 
   //实现退出功能
   $('.logout').on('click', function () {

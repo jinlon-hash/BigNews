@@ -39,16 +39,31 @@ $(function () {
   //第三步：表单的submit事件，收集更改信息，然后完成数据交互进行修改
   $('.myForm').on('submit', function (e) {
     e.preventDefault();
+    console.log($(this).serialize());
     $.ajax({
       type: 'post',
       url: '/my/userinfo',
       //表单序列化，会将form标签内的所有带有name属性的值一并获取并拼接成查询字符串格式
       data: $(this).serialize(),
-      success: function (info) {
-        if (info.status == 0) {
-          layer.msg(info.message);
+      success: function (res) {
+        layer.msg(res.message);
+        if (res.status == 0 ) {
+          console.log(res);
+          //再次调用获取用户信息然后渲染的indexjs文件的函数
+          parent.window.getUserInfo();
+          //问题是提交的数据，重新调用函数的时候会不会传到函数里？
         }
       },
     });
+  });
+
+  $.ajax({
+    type: 'get',
+    url: '/my/userinfo',
+    success: function (msg) {
+      if (msg.status == 0) {
+        console.log(msg);
+      }
+    },
   });
 });
