@@ -63,8 +63,7 @@ $(function () {
       },
     });
   });
-  $('.btn-reset').on('click', function (e) {
-    console.log(123);
+  $('.reset').on('click', function (e) {
     e.preventDefault();
     getUserData();
   });
