@@ -48,10 +48,10 @@
     </script>
 
     <!-- 弹出框表单 -->
-    <script type="text/html">
-      <form class="layui-form" action="">
+    <script type="text/html" id="addForm">
+      <form class="layui-form myForm">
         <div class="layui-form-item">
-          <label class="layui-form-label">输入框</label>
+          <label class="layui-form-label">分类名称</label>
           <div class="layui-input-block">
             <input
               type="text"
@@ -65,21 +65,7 @@
           </div>
         </div>
         <div class="layui-form-item">
-          <label class="layui-form-label">输入框</label>
-          <div class="layui-input-block">
-            <input
-              type="text"
-              name="title"
-              required
-              lay-verify="required"
-              placeholder="请输入标题"
-              autocomplete="off"
-              class="layui-input"
-            />
-          </div>
-        </div>
-        <div class="layui-form-item">
-          <label class="layui-form-label">输入框</label>
+          <label class="layui-form-label">分类别名</label>
           <div class="layui-input-block">
             <input
               type="text"

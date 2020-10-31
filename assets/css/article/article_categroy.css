@@ -1,9 +1,13 @@
-.layui-card{
+.layui-card {
   margin: 16px;
 }
-.layui-card-header{
+.layui-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 5px 5px 14px;
+}
+form.myForm {
+  padding-top: 20px;
+  width:350px;
 }

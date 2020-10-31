@@ -11,9 +11,11 @@ $(function () {
   });
   $('.addCate').on('click', function () {
     layer.open({
-      type:1,
+      type: 1,
       title: '添加文章分类',
-      content: '',
+      area:['500px'],
+      content: $('#addForm').html(),
+      //获取所有子内容
     });
   });
   //卡住
