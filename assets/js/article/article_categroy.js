@@ -13,7 +13,7 @@ $(function () {
     layer.open({
       type: 1,
       title: '添加文章分类',
-      area:['500px'],
+      area:'500px',
       content: $('#addForm').html(),
       //获取所有子内容
     });
