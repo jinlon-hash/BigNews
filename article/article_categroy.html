@@ -4,8 +4,101 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../assets/css/article/article_categroy.css" />
   </head>
   <body>
-    <h2>这是文章类别页面</h2>
+    <div class="layui-card">
+      <div class="layui-card-header">
+        文章类别管理
+        <button type="button" class="layui-btn layui-btn-normal addCate">
+          添加类别
+        </button>
+      </div>
+
+      <table class="layui-table">
+        <colgroup>
+          <col />
+          <col />
+          <col width="200" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>分类名称</th>
+            <th>分类别名</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody class="lists"></tbody>
+      </table>
+    </div>
+    <script type="text/html" id="artList">
+      {{each data value index}}
+      <tr>
+        <td>{{value.name}}</td>
+        <td>{{value.alias}}</td>
+        <td>
+          <button type="button" class="layui-btn layui-btn-xs">编辑</button>
+          <button type="button" class="layui-btn layui-btn-danger layui-btn-xs">
+            删除
+          </button>
+        </td>
+      </tr>
+      {{/each}}
+    </script>
+
+    <!-- 弹出框表单 -->
+    <script type="text/html">
+      <form class="layui-form" action="">
+        <div class="layui-form-item">
+          <label class="layui-form-label">输入框</label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="title"
+              required
+              lay-verify="required"
+              placeholder="请输入标题"
+              autocomplete="off"
+              class="layui-input"
+            />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">输入框</label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="title"
+              required
+              lay-verify="required"
+              placeholder="请输入标题"
+              autocomplete="off"
+              class="layui-input"
+            />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">输入框</label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="title"
+              required
+              lay-verify="required"
+              placeholder="请输入标题"
+              autocomplete="off"
+              class="layui-input"
+            />
+          </div>
+        </div>
+      </form>
+    </script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/js/comment.js"></script>
+    <script src="../assets/lib/layui/layui.js"></script>
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+    <script src="../assets/js/article/article_categroy.js"></script>
   </body>
 </html>
