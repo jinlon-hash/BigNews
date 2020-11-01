@@ -39,7 +39,11 @@
         <td>{{value.alias}}</td>
         <td>
           <button type="button" class="layui-btn layui-btn-xs">编辑</button>
-          <button type="button" class="layui-btn layui-btn-danger layui-btn-xs">
+          <button
+            type="button"
+            class="layui-btn layui-btn-danger layui-btn-xs btn-del"
+            data-id="{{value.Id}}"
+          >
             删除
           </button>
         </td>
@@ -49,7 +53,7 @@
 
     <!-- 弹出框表单 -->
     <script type="text/html" id="addForm">
-      <form class="layui-form myForm">
+      <form class="layui-form myForm addForm">
         <div class="layui-form-item">
           <label class="layui-form-label">分类名称</label>
           <div class="layui-input-block">
@@ -78,8 +82,8 @@
             />
           </div>
         </div>
-        <button type="button" class="layui-btn sureAdd">确认添加</button>
-        <button type="button" 	class="layui-btn layui-btn-primary">重置</button>
+        <button class="layui-btn sureAdd">确认添加</button>
+        <button class="layui-btn layui-btn-primary btn-reset">重置</button>
       </form>
     </script>
     <script src="../assets/lib/jquery.js"></script>
