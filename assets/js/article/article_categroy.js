@@ -66,6 +66,43 @@ $(function () {
       layer.close(index);
     });
   });
+
+  //实现更新编辑文章弹框
+  $('tbody').on('click', '.btn-edit', function () {
+    var articleId = $(this).data('id');
+    $.ajax({
+      type: 'get',
+      url: '/my/article/cates/' + articleId,
+      success: function (res) {
+        if (res.status == 0) {
+          //表单自己知道更新什么
+          layui.form.val('myForm', res.data);
+        }
+      },
+    });
+    window.editIndex = layer.open({
+      type: 1,
+      title: '添加文章分类',
+      area: '500px',
+      content: $('#editForm').html(),
+    });
+  });
+
+  //表单form注册submit事件  事件委托  将更改的值Ajax传给服务器
+  $('body').on('submit', '.editForm', function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/my/article/updatecate',
+      data: $(this).serialize(),
+      success: function (res) {
+        console.log(res.status);
+        layer.msg(res.message);
+        layer.close(editIndex);
+        getLists();
+      },
+    });
+  });
   //卡住
   //卡住
   //卡住
