@@ -27,7 +27,46 @@
         </div>
         <button type="button" class="layui-btn">筛选</button>
       </form>
+      <table class="layui-table">
+        <colgroup>
+          <col />
+          <col width="150" />
+          <col width="150" />
+          <col width="150" />
+          <col width="150" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>文章列表</th>
+            <th>分类</th>
+            <th>发表时间</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</td>
+            <td>科学</td>
+            <td>2020-11-1 13:22:20</td>
+            <td>已发布</td>
+            <td>
+              <button type="button" class="layui-btn layui-btn-xs btn-edit" }>
+                编辑
+              </button>
+              <button
+                type="button"
+                class="layui-btn layui-btn-danger layui-btn-xs btn-del"
+              >
+                删除
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody class="lists"></tbody>
+      </table>
     </div>
+
     <script type="text/html" id="categoryList">
       <option value="">所有分类</option>
       {{each data value index}}
