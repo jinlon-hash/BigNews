@@ -38,6 +38,7 @@ $(function () {
 
           if (info.status === 0) {
             layer.close(addIndex);
+            console.log(info);
             getLists();
             //调用渲染分类列表
           }
