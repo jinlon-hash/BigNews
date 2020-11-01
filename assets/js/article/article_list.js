@@ -31,7 +31,7 @@ $(function () {
         console.log(res);
         var htmlStr = template('articleList', res);
         $('tbody').html(htmlStr);
-        renderPages(res)
+        renderPages(res);
       },
     });
   }
@@ -79,4 +79,40 @@ $(function () {
       },
     });
   }
+
+  //删除文章
+
+  // 给删除按钮注册事件  事件委托的方式
+  $('tbody').on('click', '.btn-del', function () {
+    // 获取文章的id
+    var articleId = $(this).data('id');
+    //通过按钮个数来获取当前页面的文章数量
+    var count = $('tbody .btn-del').length;
+    // 弹出询问框
+    layer.confirm(
+      '是否要真的删除此条文章?',
+      { icon: 3, title: '提示' },
+      function (index) {
+        // 发送Ajax请求
+        $.ajax({
+          url: '/my/article/delete/' + articleId,
+          success: function (res) {
+            // 提示用户是否成功
+            layer.msg(res.message);
+            // 如果成功则重新渲染页面
+            if (res.status == 0) {
+              //对按钮数量进行判断
+              if (count == 1) {
+                params.pagenum = params.pagenum = 1 ? 1 : params.pagenum - 1;
+              }
+              renderList();
+            }
+          },
+        });
+
+        layer.close(index);
+      }
+    );
+  });
+  //
 });
