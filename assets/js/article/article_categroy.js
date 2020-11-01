@@ -1,7 +1,7 @@
 $(function () {
   getLists();
   function getLists() {
-    //第一步是获取并渲染
+    //第一步是获取文章分类并渲染
     $.ajax({
       type: 'GET',
       url: '/my/article/cates',

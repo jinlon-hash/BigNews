@@ -92,13 +92,15 @@
         <button class="layui-btn sureAdd" lay-submit lay-filter="formDemo">
           确认添加
         </button>
-        <button class="layui-btn layui-btn-primary btn-reset">重置</button>
+        <button class="layui-btn layui-btn-primary btn-reset" type="reset">
+          重置
+        </button>
       </form>
     </script>
     <!-- 更新分类弹出框 -->
     <script type="text/html" id="editForm">
       <form class="layui-form myForm editForm" lay-filter="myForm">
-        <input type="hidden" name='Id'>
+        <input type="hidden" name="Id" />
         <div class="layui-form-item">
           <label class="layui-form-label">分类名称</label>
           <div class="layui-input-block">
