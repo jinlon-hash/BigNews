@@ -5,11 +5,13 @@ $(function () {
     $.ajax({
       type: 'GET',
       url: '/my/article/cates',
-      success: function (info) {
-        // layer.msg(info.message);
-        console.log(info);
-        var artList = template('artList', info);
-        $('.lists').html(artList);
+      success: function (res) {
+        // layer.msg(res.message);
+        console.log(res);
+        if (res.status == 0) {
+          var artList = template('artList', res);
+          $('.lists').html(artList);
+        }
       },
     });
   }
@@ -23,6 +25,7 @@ $(function () {
       content: $('#addForm').html(),
       //获取所有子内容
     });
+  });
 
     //添加文章分类  点击确认添加  添加分类
     //动态生成的  需要事件委托  因为要收集表单数据 所以注册给form
@@ -32,20 +35,20 @@ $(function () {
         type: 'POST',
         url: '/my/article/addcates',
         data: $(this).serialize(),
-        success: function (info) {
+        success: function (res) {
           //添加成功后隐藏模态框
-          layer.msg(info.message);
+          layer.msg(res.message);
 
-          if (info.status === 0) {
+          if (res.status === 0) {
             layer.close(addIndex);
-            console.log(info);
+            console.log(res);
             getLists();
             //调用渲染分类列表
           }
         },
       });
     });
-  });
+
   //实现删除功能  动态生成的要事件委托  通过id来删除
   $('tbody').on('click', '.btn-del', function () {
     //可以用来获取标签中自定义属性的内容
