@@ -1,12 +1,19 @@
 $(function () {
+  // 1. 启用富文本编辑器
   initEditor();
-  $img = $('#image');
-  var option = {
-    aspectRatio: 400 / 280, //裁切比例
+
+  // 2. 创建裁切区
+  // 2.1 获取裁剪区域的 DOM 元素
+  var $img = $('#image');
+
+  // 2.2 配置裁图选项
+  const options = {
+    // 纵横比
+    aspectRatio: 400 / 280,
+    // 指定预览区域
     preview: '.img-preview',
   };
-  $img.cropper(option);
-
+  //上传图片功能块
   $('.btn-file').on('click', function () {
     $('#avatar').click();
   });
@@ -16,60 +23,68 @@ $(function () {
     $img.cropper('replace', imgSrc);
   });
 
-  //分类下拉选框
+  // 2.3 创建裁剪区域
+  $img.cropper(options);
+
+  // 3. 文章分类数据的渲染
+  // 3.1 立即发送ajax请示下拉框内容的数据回显
   $.ajax({
-    type: 'GET',
+    type: 'get',
     url: '/my/article/cates',
-    success: function (info) {
-      if (info.status == 0) {
-        //模板引擎添加数据
-        var artList = template('categoryList', info);
-        $('#category').html(artList);
-        //重新用layui的方法进行渲染下拉框 因为生成的都是dl  dd
+    success: function (res) {
+      // console.log(res)
+      // 3.2 将数据渲染到下拉列表当中
+      if (res.status == 0) {
+        var htmlStr = template('categoryList', res);
+        $('#category').html(htmlStr);
+
+        // 重新渲染一下表单内容
         layui.form.render();
-        geiArticleDaraById();
+
+        //调用方法 进行数据回显
+        getArticleDataById();
       }
     },
   });
-  //通过编辑文章的id获取其信息-----------------
-  var articleId = location.search.slice(4);
-  console.log(articleId);
 
-  //编辑页的数据回显
-  function geiArticleDaraById() {
+  // 4. 待编辑文章的数据回显
+  // 4.1 获取待编辑文章的id
+  var articleId = location.search.slice(4);
+  // console.log('当前待编辑的文章id为:'+articleId);
+
+  // 4.2 向服务器端发送请示
+  function getArticleDataById() {
     $.ajax({
       type: 'get',
-      ulr: '/my/article/' + articleId,
+      url: '/my/article/' + articleId,
       success: function (res) {
         console.log(res);
+        // 4.3 渲染文章数据
         if (res.status == 0) {
           layui.form.val('myForm', {
-            Id: res.data.Id,
+            Id: res.data.Id, // 隐藏域Id
             title: res.data.title,
             cate_id: res.data.cate_id,
           });
-          tinyMCE.activeEditor.setContent(res.data.content);
-          // $('#image')
-          //   .cropper.attr(
-          //     'src',
-          //     'http://ajax.frontent.itheima.net' + res.data.cover_img
-          //   )
-          //   .cropper(option);
+          // 富文本编辑中的数据需要单独来渲染
+          // tinyMCE.activeEditor.setContent(res.data.content);
+          // 渲染图片
+          $('#image')
+            .cropper('destroy') // 销毁旧的裁剪区域
+            .attr(
+              'src',
+              'http://ajax.frontend.itheima.net' + res.data.cover_img
+            ) // 重新设置图片路径
+            .cropper(options);
         }
       },
     });
   }
 
-  //万事俱备 就等发布文章
-  //给form注册事件  获取数据
-  $('.myForm').on('submit', function () {
-    //用fd获得数据  文章标题  文章类别  文章内容
-    //但是图片上传和文章状态需要自定义
-    $.ajax({
-      type: 'post',
-      url: '/my/article/add',
-    });
-  });
+  // 5. 图片的本地预览功能
+
+  // 5. 更新文章
+  // 5.1 给form表单注册click事件
   //给两个按钮同时注册事件
   $('.btn').on('click', function (e) {
     e.preventDefault();
@@ -84,7 +99,7 @@ $(function () {
       fd.append('state', '草稿');
     }
     //准备图片的二进制
-    $('#image')
+    $img
       .cropper('getCroppedCanvas', {
         width: 400,
         height: 280,
@@ -96,7 +111,7 @@ $(function () {
         //数据都收集完后发Ajax请求
         $.ajax({
           type: 'post',
-          url: '/my/article/add',
+          url: '/my/article/edit',
           contentType: false,
           processData: false,
           data: fd,

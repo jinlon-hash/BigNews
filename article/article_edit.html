@@ -12,6 +12,7 @@
     <div class="layui-card">
       <div class="layui-card-header">编辑文章</div>
       <form class="layui-form myForm" lay-filter='myForm'>
+        <input type="hidden" name="Id">
         <div class="layui-form-item">
           <label class="layui-form-label">文章标题</label>
           <div class="layui-input-block">
@@ -45,7 +46,8 @@
             <textarea
               placeholder="请输入内容"
               class="layui-textarea"
-              id="mytextarea"
+              id="mytextarea" 
+              onclick="setContent()"
             ></textarea>
           </div>
         </div>
@@ -87,12 +89,11 @@
       {{/each}}
     </script>
     <script src="../assets/lib/jquery.js"></script>
-    <script src="../assets/lib/layui/layui.js"></script>
+    <script src="../assets/lib/cropper/Cropper.js"></script>
+    <script src="../assets/lib/cropper/jquery-cropper.js"></script>
     <script src="../assets/lib/layui/layui.all.js"></script>
     <script src="../assets/lib/template-web.js"></script>
     <script src="../assets/js/comment.js"></script>
-    <script src="../assets/lib/cropper/Cropper.js"></script>
-    <script src="../assets/lib/cropper/jquery-cropper.js"></script>
     <script src="../assets/lib/tinymce/tinymce.min.js"></script>
     <script src="../assets/lib/tinymce/tinymce_setup.js"></script>
     <script src="../assets/js/article/article_edit.js"></script>
