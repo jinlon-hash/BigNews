@@ -37,7 +37,15 @@
           <col width="150" />
           <col width="150" />
         </colgroup>
-        <thead></thead>
+        <thead>
+          <tr>
+            <th>文章标题</th>
+            <th>文章分类</th>
+            <th>发表时间</th>
+            <th>文章状态</th>
+            <th>操作</th>
+          </tr> 
+        </thead>
         <tbody></tbody>
       </table>
 
@@ -58,7 +66,7 @@
       <tr>
         <td>{{value.title}}</td>
         <td>{{value.cate_name}}</td>
-        <td>{{value.pub_date.slice(4)}}</td>
+        <td>{{value.pub_date.slice(0,-4)}}</td>
         <td>{{value.state}}</td>
         <td>
           <button
