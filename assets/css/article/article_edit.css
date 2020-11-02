@@ -1,0 +1,31 @@
+.layui-card {
+  margin: 15px;
+}
+form {
+  padding: 20px 10px;
+}
+.cropper-box img {
+  width: 400px;
+}
+.row1 {
+  width: 620px;
+  display: flex;
+  justify-content: space-between;
+}
+.preview-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.top {
+  margin-bottom: 30px;
+}
+.w200 {
+  width: 200px;
+  height: 150px;
+  overflow: hidden;
+}
+.footer {
+  margin-top: 20px;
+}

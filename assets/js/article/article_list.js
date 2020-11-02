@@ -11,6 +11,10 @@ $(function () {
       }
     },
   });
+  // //点击编辑，跳转编辑页面
+  // $('tbody').on('click', '.btn-edit', function () {
+  //   location.href = './article_edit.html';
+  // });
   //页数什么的都是相当于绑定的  不能写死
   // 所以单独提出来
   var params = {
